@@ -1,0 +1,32 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# Get pages list
+GET {{base_url}}/page/list
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Get page
+GET {{base_url}}/page/1
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Create about as page
+POST {{base_url}}/page
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "name": "About as",
+  "content": "![Magical creatures](http://static.prsa.pl/images/bdd548c3-07d6-48b5-a082-352474c19dac.jpg)\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+###

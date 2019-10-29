@@ -1,0 +1,175 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# Get list
+GET {{base_url}}/products/list
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Get list by category
+GET {{base_url}}/products/category/1
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Get by id
+GET {{base_url}}/product/1
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Create product
+POST {{base_url}}/product
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "name": "Test2",
+  "description": "addadadsasdasdasd",
+  "price": 35.2,
+  "picture": "https://i.pinimg.com/originals/dc/7d/18/dc7d186ac389a22090de717f2302bd79.png",
+  "details": {
+    "title": "aaaaa"
+  }x
+}
+
+###
+
+# Create products
+POST {{base_url}}/products/list
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "products": [
+    {
+      "name": "Product 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 1299.99,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 3255.20,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": ""
+      }
+    },
+    {
+      "name": "Product 3",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 1233.33,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 4",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 777,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 5",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 455,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 6",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 233,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 7",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 122.55,
+      "quantity": 100,
+      "category": 1,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 8",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 355.55,
+      "quantity": 100,
+      "category": 2,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 9",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 233.99,
+      "quantity": 100,
+      "category": 2,
+      "details": {
+        "title": "Lorem ipsum dolor sit amet",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    },
+    {
+      "name": "Product 10",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "picture": "https://via.placeholder.com/400x400.jpg",
+      "price": 0,
+      "quantity": 100,
+      "category": 2,
+      "details": {
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat vel dui in facilisis. Sed a sodales tellus. Donec faucibus odio in enim sodales, suscipit aliquet turpis condimentum. Praesent mattis ipsum orci, ut porta neque luctus in. Donec odio purus, egestas nec consequat a, ultricies at arcu. Fusce varius justo vel tellus feugiat, at placerat neque viverra. Pellentesque vestibulum egestas libero, id efficitur sapien laoreet ut. Praesent eu faucibus urna, ut egestas tellus. Pellentesque venenatis sit amet ex sed mattis. Vivamus quis magna sem. Proin in faucibus velit. Duis non efficitur libero, eget posuere augue."
+      }
+    }
+  ]
+}
+
+###

@@ -1,0 +1,45 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# Get list
+GET {{base_url}}/category
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+# Create category
+POST {{base_url}}/category
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "name": "Test"
+}
+
+###
+
+# Create categories
+POST {{base_url}}/category/list
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "categories": [
+    {
+      "name": "Test 1"
+    },
+    {
+      "name": "Test 2"
+    },
+    {
+      "name": "Test 3"
+    }
+  ]
+}
+
+###

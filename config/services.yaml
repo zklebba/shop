@@ -1,0 +1,109 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,ContactFormService.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\Api\:
+        resource: '../src/Controller/Api/*'
+        tags: ['controller.service_arguments']
+        public: true
+    App\Controller\:
+        resource: '../src/Controller/*'
+        tags: ['controller.service_arguments']
+        public: true
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    my_orders_access_key_encoder:
+        class: \Zend\Crypt\BlockCipher
+        factory: [\Zend\Crypt\BlockCipher, factory]
+        arguments:
+            $adapter: 'openssl'
+            $options:
+                algo: 'aes'
+
+    App\Service\OrdersAccessKeyService:
+        class: \App\Service\OrdersAccessKeyService
+        arguments:
+            $blockCipher: '@my_orders_access_key_encoder'
+            $config:
+                aes_key: '%env(resolve:APP_SECRET)%'
+                access_key_time_out: 3600 # in sec - 1h
+
+    App\Service\Payment\Gateway\Stripe\StripeService:
+        class: \App\Service\Payment\Gateway\Stripe\StripeService
+        arguments:
+            $secretApiKey: '%env(resolve:STRIPE_SECRET_API_KEY)%'
+            $productsRepo: '@App\Repository\ProductRepository'
+            $router: '@router'
+            $config:
+                currency: '%env(resolve:SHOP_CURRENCY)%'
+                locale: '%env(resolve:PAYMENT_LOCALE)%'
+                route_success: 'checkout'
+                route_success_vars:
+                    paymentReturn: 'success'
+                route_cancel: 'checkout'
+                route_cancel_vars:
+                    paymentReturn: 'cancel'
+                payment_method_types:
+                    - 'card'
+
+    send_grid:
+        class: \SendGrid
+        autowire: false
+        arguments:
+            - '%env(resolve:SENDGRID_API_KEY)%'
+
+    send_grid_email:
+        class: \SendGrid\Mail\Mail
+        autowire: false
+        shared: false
+
+    send_grid_configurator:
+        class: \App\Service\Email\SendgridEmailConfigurator
+        arguments:
+            $sendGrid: '@send_grid'
+            $sendGridMail: '@send_grid_email'
+            $config:
+                from_email: '%env(resolve:SENDER_EMAIL)%'
+                from_name: '%env(resolve:SENDER_NAME)%'
+                to_email: '%env(resolve:ADMIN_EMAIL)%'
+                to_name: '%env(resolve:ADMIN_NAME)%'
+
+    App\Service\Email\ContactFormEmail:
+        class: \App\Service\Email\ContactFormEmail
+        autowire: false
+        configurator: ['@send_grid_configurator', 'configure']
+        calls:
+            - [setSubject, ['%env(CONTACT_FORM_EMAIL_SUBJECT)%']]
+            - [setTemplateId, ['%env(CONTACT_FORM_EMAIL_TEMPLATE_ID)%']]
+
+    App\Service\Email\OrdersAccessEmail:
+        class: \App\Service\Email\OrdersAccessEmail
+        autowire: false
+        configurator: ['@send_grid_configurator', 'configure']
+        calls:
+            - [setSubject, ['%env(ACCESS_MY_ORDER_EMAIL_SUBJECT)%']]
+            - [setTemplateId, ['%env(ACCESS_MY_ORDER_EMAIL_TEMPLATE_ID)%']]
+        arguments:
+            $accessKey: '@App\Service\OrdersAccessKeyService'
+            $router: '@router'
+            $routeName: 'orders'
+

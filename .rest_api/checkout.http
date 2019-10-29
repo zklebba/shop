@@ -1,0 +1,61 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# Create order - checkout
+POST {{base_url}}/checkout
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "order": {
+    "customer": {
+      "email": "zbigniew.klebba@gmail.com",
+      "billing_address": {
+        "first_name": "Zibi",
+        "last_name": "Klebba",
+        "address": "My address 22",
+        "address_line_1": "",
+        "phone": "0777777777",
+        "country": "United Kingdom",
+        "city": "Cambridge",
+        "post_code": "CB1XXX"
+      },
+      "shipping_address": {
+        "first_name": "Zibi",
+        "last_name": "Klebba",
+        "address": "My address 22",
+        "address_line_1": "",
+        "phone": "0777777777",
+        "country": "United Kingdom",
+        "city": "Cambridge",
+        "post_code": "CB1XXX"
+      }
+    },
+    "comment": "My comment about order",
+    "details": [
+      {
+        "product": 1,
+        "price": 33.22,
+        "quantity": 1
+      },
+
+      {
+        "product": 2,
+        "price": 11.4,
+        "quantity": 3
+      },
+
+      {
+        "product": 3,
+        "price": 22.4,
+        "quantity": 2
+      }
+    ]
+  }
+}
+
+###

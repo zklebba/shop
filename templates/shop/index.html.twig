@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shop{% endblock %}
+
+{% block javascripts %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ ga_tracking }}');
+    </script>
+
+    <script type="text/javascript" src="/assets/app/build/index.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+    <noscript>You need to enable JavaScript to run shop.</noscript>
+    <div id="root" data-ga-tracking-id="{{ ga_tracking }}"></div>
+
+{% endblock %}
